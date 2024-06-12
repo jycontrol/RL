@@ -1,0 +1,1486 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMlNWT1uMmO8l6EbMrCirKY",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/jycontrol/RL/blob/main/Chapter%202%20Hello%2C%20Python%3F\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## 2.2 표현식과 값: 파이썬 산술 연산"
+      ],
+      "metadata": {
+        "id": "Qi7L4N9vaIQi"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### 2.2.1 타입"
+      ],
+      "metadata": {
+        "id": "isgG5USCbxJW"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "파이썬의 모든 값에는 특정한 타입이 (integer, float 등) 있고, 타입에 따라 값들을 조합할 때 동작이 달라짐\n",
+        "두 float로 이뤄진 표현식은 float 생성"
+      ],
+      "metadata": {
+        "id": "ykzTzEBZafYI"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "D04rD35kZzgw",
+        "outputId": "9ccf9167-9a46-47dd-a11d-248e9eeb09d6"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "7.0"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 2
+        }
+      ],
+      "source": [
+        "70.0/10.0"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "피연산자가 int와 float면 파이썬은 자동으로 int를 float로 변환\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "DevgUt-lbCT9"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "70.0/10"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "-gbh0bMYa4of",
+        "outputId": "3f28cc21-dfee-4f3f-f42d-713dd77ce699"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "7.0"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 3
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "실수를 사용할 때는 .이하를 생략해도 됨 (ex: 10. ) 단 가독성이 떨어져 잘 사용되지는 않음"
+      ],
+      "metadata": {
+        "id": "3AX3A4debTMX"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "70.0/10."
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "QarY1NuwbhI6",
+        "outputId": "d0e564c6-4df6-406f-b5c7-963b73e5b5c1"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "7.0"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 4
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### 2.2.2 나눗셈과 나머지 연산, 지수"
+      ],
+      "metadata": {
+        "id": "5nKaYcrIb4IA"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "나눗셈 결과 중 정수만 필요할 경우: 정수 나눗셈 (float division) 사용\n",
+        "\n",
+        "ex:53 시간이 며칠인지 알고 싶을 때"
+      ],
+      "metadata": {
+        "id": "qmcZOcotcAnl"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "53//24"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "v2-ig_VRb_hq",
+        "outputId": "a444b861-6748-423e-d9ec-aaf659defb30"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "2"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 6
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "나눗셈의 나머지: 나머지 연산자 (modulo)\n",
+        "ex: 위 식에서 2일이 지나고 몇 시간이 남았는지 알고 싶을 때"
+      ],
+      "metadata": {
+        "id": "P993KRSkcXUl"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "53%24"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "05m3kLcMcw-n",
+        "outputId": "a8014b44-821c-443e-b8fc-b4c64248c25f"
+      },
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "5"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 7
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "파이썬은 정수 나눗셈 (floor division)\n",
+        "결과를 올림하지 않음. 가장 가까운 정수로 내림값 (floor) 반환함"
+      ],
+      "metadata": {
+        "id": "OLzoSe3bc27W"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "17//10"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "FWVmeXyTc_Id",
+        "outputId": "ee2a9741-bed9-43e5-b413-52aa4a4bcb7d"
+      },
+      "execution_count": 14,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "1"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 14
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "음수 연산자에 % (modulo)와 // (float division) 사용할 때는 floor 결과에 따라 생각하는 것 보다 1 작은 수가 나옴에 유의"
+      ],
+      "metadata": {
+        "id": "qLkpT1iFdR3F"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "-17//10"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "PcxUgCU2dhhr",
+        "outputId": "41e5c62c-9bc9-46e8-e9da-82fca7eda0cb"
+      },
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "-2"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 10
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "나머지 연산자를 사용할 때는 결과값의 부호는 두 번째 연산자의 부호를 따름"
+      ],
+      "metadata": {
+        "id": "cTy3SELmelcm"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "-17%10"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "PTLFvyXmeuZa",
+        "outputId": "be8faad6-9362-494c-8e5d-a816e3350e06"
+      },
+      "execution_count": 12,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "3"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 12
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "17%-10"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "tOnbV_9Je6Gd",
+        "outputId": "c7d1a075-85fc-46aa-8b1f-e3eb5d12c88b"
+      },
+      "execution_count": 15,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "-3"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 15
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "수학적으로 //와 %의 관계는 0이 아닌 두 수 a와 b에 대한 다음 정의에서 나옴.\n",
+        "\n",
+        "**(b * (a // b) + a % b) 는 a와 같다. **\n",
+        "\n",
+        "a = -17, b = 10이라고 했을 때,\n",
+        "-17//10 = -2\n",
+        "-17%10 = 3\n",
+        "따라서 (10 * (-17//10) + -17%10) = -17"
+      ],
+      "metadata": {
+        "id": "reOntBARnYN7"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "부동소수점도 //와 %의 피연산자가 될 수 있음\n",
+        "\n",
+        "//를 수행한 후 결과값을 가장 가까운 정수로 내림\n",
+        "\n",
+        "하지만 결과값의 타입은 부동소수점  수임"
+      ],
+      "metadata": {
+        "id": "6Al87bSMoiVc"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "3.3 //1"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "rxRJNIopnkmd",
+        "outputId": "dadb0d02-bc24-482c-e302-2c52067ac1f3"
+      },
+      "execution_count": 16,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "3.0"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 16
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "3/1.0"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "FPz_AjhAnJfU",
+        "outputId": "d66dbce1-7021-473b-d807-bdc70cccbebd"
+      },
+      "execution_count": 17,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "3.0"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 17
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "3/1.1"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "1ySHqv2zo7cx",
+        "outputId": "9f84aedf-2c76-45d8-d313-5c8d56898207"
+      },
+      "execution_count": 18,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "2.727272727272727"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 18
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "3.5//1.1"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "3Nkv90DepCmx",
+        "outputId": "4f56ba21-46bc-41cd-c80c-f9768bbd259a"
+      },
+      "execution_count": 19,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "3.0"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 19
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "3.5//1.3"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "KtgsfTbBpFBu",
+        "outputId": "b4d7ad52-09ff-4ba7-f9f9-f3cebe541701"
+      },
+      "execution_count": 20,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "2.0"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 20
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "지수 표현\n",
+        "\n",
+        "$3^6 $\n"
+      ],
+      "metadata": {
+        "id": "hqFkxuhipKQe"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "3**6"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "TMsiLApcpT81",
+        "outputId": "c4ec6cfd-08bd-4753-86eb-22c8c71c023a"
+      },
+      "execution_count": 21,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "729"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 21
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**이항연산자**(binary operator): 피 연산자가 2개\n",
+        "\n",
+        "음수 부호 연산자는 피연산자 한 개에 적용되므로 **단항연산자**"
+      ],
+      "metadata": {
+        "id": "xjn-E7NPpYLX"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "-5"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "n1uvhFcSpn2j",
+        "outputId": "b8fce032-de85-4c11-a115-65c0baa21fe5"
+      },
+      "execution_count": 24,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "-5"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 24
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "--5"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "DNV07u3vppSN",
+        "outputId": "0e9e9056-6534-479f-8378-8154049c3091"
+      },
+      "execution_count": 23,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "5"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 23
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "---5"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "3dmkCBbqpqf7",
+        "outputId": "09190fe4-d0a0-4065-c130-d28401f52403"
+      },
+      "execution_count": 22,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "-5"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 22
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## 2.3 타입이란 무엇인가?"
+      ],
+      "metadata": {
+        "id": "ncxhEajSptY6"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "파이썬에서의 타입은 두 요소로 구성: 값집합, 갑에 적용할 수 있는 연산자의 집합\n",
+        "\n",
+        "int 타입에서\n",
+        "\n",
+        "값: ... -3, -2, -1, 0, 1, 2, 3, ...\n",
+        "\n",
+        "연산자: +, -, *, /, //, %, **,..\n",
+        "\n",
+        "float 타입\n",
+        "\n",
+        "값: 실수의 부분집합\n",
+        "연산자: int 타입과 동일"
+      ],
+      "metadata": {
+        "id": "sQn7-itZpw3N"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### 2.3.1 유한정밀도\n",
+        "\n",
+        "부동소수점 수는 엄밀히 말해 분수가 아님.\n",
+        "\n",
+        "2/3에 대해"
+      ],
+      "metadata": {
+        "id": "GZXNvS38qqSP"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "2/3"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "RDkPjnVgqsSK",
+        "outputId": "abbbf2aa-5a65-4e20-941e-bdaa68c183d4"
+      },
+      "execution_count": 25,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "0.6666666666666666"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 25
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "실제로는 6이 무한대로 반복되야하지만 컴퓨터 메모리 용량의 한계로 대부분의 프로그램 언어가 한 숫자에 대해 저장하는 정보 용량을 제한함"
+      ],
+      "metadata": {
+        "id": "0ISwlPPhrDQd"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**Note: 수 정밀도 자세히 알아보기**\n",
+        "\n",
+        "파이썬에서 정수(int 타입 값)는 원하는 만큼 클 수도,  작을 수도 있음\n",
+        "\n",
+        "하지만 float 값은 실수에 대한 근사값임\n",
+        "\n",
+        "예를 들어 1/4는 정확하게 저장할 수 있지만, 2/3은 정확하게 저장하는 것이 불가능함.\n",
+        "메모리를 더 사용한다고 하더라도 실제 값에 가까워지기는 하지만 문제를 해결할 수는 없음\n",
+        "\n",
+        "2/3과 0.6666666666666666의 차이는 작아 보일 수 있지만 실제 연산에서 일어날 오류는 심각할 수 있음\n",
+        "\n",
+        "예를 들어 1 + 2/3 = 5/3 이지만 각각의 연산값은 다를 수 있음\n"
+      ],
+      "metadata": {
+        "id": "kEyjyn2SwRRU"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "1 + 2/3"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "K5BKtX3VxPzc",
+        "outputId": "42e4b155-f114-4b49-db1d-e60d96488ff0"
+      },
+      "execution_count": 27,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "1.6666666666666665"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 27
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "5/3"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "JY0H1U_vxSF9",
+        "outputId": "7cc6840c-3725-4d5a-dbad-b1b53b4c5162"
+      },
+      "execution_count": 28,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "1.6666666666666667"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 28
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "계산을 더 할수록 올림 오류는 더 커지고, 특히 매우 큰 수와 매우 작은 수를 연산하면 더욱 커짐.\n",
+        "\n",
+        "예를 들어 10000000000 (100억)과 0.00000000001 (소수점 다음 0이 10개)을 더하면 다음과 같음"
+      ],
+      "metadata": {
+        "id": "DQPHkMhBxZQZ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "10000000000 + 0.00000000001"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "l7izeOeax0dd",
+        "outputId": "6a786de8-a816-4aa9-b38b-d63c00889334"
+      },
+      "execution_count": 29,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "10000000000.0"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 29
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "결과값의 첫번째와 마지막 숫자 사이에 0이 20개 있어야 하지만, 컴퓨터에 다 저장할 수 없으므로 10000000000이됨. (덧셈이 일어나지 않은 것 처럼...)\n",
+        "\n",
+        "따라서 큰 수에 작은 수를 수없이 더하더라도 변화가 없을 수 있음.\n",
+        "\n",
+        "(은행과 같이 누계를 계산하는 곳에서는 달갑지 않은 일)\n",
+        "\n",
+        "부동소수점이 갖는 이러한 문제를 항상 의식하고 있어야 함.\n",
+        "\n",
+        "컴퓨터는 메모리와 속도에 한계가 있으므로 이 문제를 해결할 특효약은 없음\n",
+        "\n",
+        "연속 수학의 근사치 계산 알고리즘을 연구하는 수치해석은 컴퓨터 과학과 수학에서 가장 하위 분야임\n",
+        "\n",
+        "유용한 팁: 부동소수점 수를 더할 때는 작은 수 부터 큰 수 순으로 더해서 오류를 최소화"
+      ],
+      "metadata": {
+        "id": "X819LFUOyAlX"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### 2.3.2 연산자 우선순위"
+      ],
+      "metadata": {
+        "id": "jw7gBpAtrTyi"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "화씨 섭시 변환: 화씨에서 32뺀 후 5/9 곱하면 섭씨로 표시됨\n",
+        "\n",
+        "즉 섭씨 = (화씨 - 32) * 5/9\n",
+        "\n",
+        "화씨 212도를 섭씨로 바꾼다면 100도가 되어야 하지만,"
+      ],
+      "metadata": {
+        "id": "UKrBV_36rZdq"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "212 - 32 * 5 / 9"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "aKzG5u4LvxqB",
+        "outputId": "38a9a984-d531-44c5-ec9c-7846542f79be"
+      },
+      "execution_count": 26,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "194.22222222222223"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 26
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "오류가 생긴 이유는 연산의 우선순위 때문. 곱셈과 나눗셈이 뺄셈 보다 우선순위가 높음"
+      ],
+      "metadata": {
+        "id": "XSdMtutov7a_"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "다음과 같이 하위 표현식 앞뒤에 괄호를 넣으면 우선순위 변경 가능"
+      ],
+      "metadata": {
+        "id": "MgvUEahtzD1F"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "(212 - 32) * 5 / 9"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "E3guhxOizI_q",
+        "outputId": "fa66aacf-151b-4934-dec2-6fa719648a6e"
+      },
+      "execution_count": 30,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "100.0"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 30
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "| 우선순위 | 연산자 | 연산 |\n",
+        "|----------|----------|----------|\n",
+        "| 높음 | ** | 지수 |\n",
+        "|      | - | 음수 |\n",
+        "||*, /, //, %|곱셈과 나눗셈, 정수 나눗셈, 나머지 |\n",
+        "| 낮음 | +, - | 덧셈과 뺄셈 |"
+      ],
+      "metadata": {
+        "id": "RhSSP8gFzOit"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "높은 우선순위의 연산자를 낮은 우선순위의 연산자보다 먼저 적욯함"
+      ],
+      "metadata": {
+        "id": "KHc1uI9y0ONp"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "-2 ** 4"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "SQpQQ5Cm0L8x",
+        "outputId": "57a8c9f7-e863-4132-cb41-6845709d460b"
+      },
+      "execution_count": 31,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "-16"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 31
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "-(2 ** 4)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "fKvc-M2T0W6d",
+        "outputId": "1c90148e-5b16-40d2-e85a-0fec6bd3e027"
+      },
+      "execution_count": 32,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "-16"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 32
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "(-2)**4"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "-US_3vZP0ao3",
+        "outputId": "0ea5d734-efa7-4d10-9acd-d357a6bfa379"
+      },
+      "execution_count": 33,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "16"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 33
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "같은 줄에 있는 연산자는 우선순위가 탕으며 지수를 제외하고는 왼쪽부터 오른쪽으로 적용\n",
+        "\n",
+        "지수는 오른쪽부터 왼쪽으로 적용"
+      ],
+      "metadata": {
+        "id": "PwslDhAd21K2"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "3 + 4 - 5"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Hpg3TYML2m4O",
+        "outputId": "097b75a7-9f24-4182-f146-01aeddb02507"
+      },
+      "execution_count": 35,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "2"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 35
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "표현식이 복잡하면 괄호를 넣는 것이 좋음\n",
+        "\n",
+        "간단한 표현식에는 괄호를 쓰지 않는 것이 좋음"
+      ],
+      "metadata": {
+        "id": "sAyXGaYz3H6M"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## 변수와 컴퓨터 메모리: 값 저장"
+      ],
+      "metadata": {
+        "id": "aFEDz4jd3P9y"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**변수**: 값을 참조하는 이름\n",
+        "\n",
+        "철자와 숫자, 밑줄 기호를 사용해 변수명 생성. 숫자로 시작할 수는 없음\n",
+        "\n",
+        "가능: X, speciaes5618, degrees_celsius\n",
+        "\n",
+        "불가능: 777, no-way\n",
+        "\n",
+        "대소문자를 구별함\n",
+        "\n",
+        "**할당**: 변수에 값을 기입"
+      ],
+      "metadata": {
+        "id": "OOa49n_r3UCU"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "degrees_celsius = 26.0"
+      ],
+      "metadata": {
+        "id": "OwkPXIwU2y0l"
+      },
+      "execution_count": 41,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "위 명령문을 할당문이라고 함. degrees_celsius 라는 이름의 변수에 값 26.0을 할당했다고 표현.\n",
+        "\n",
+        "할당이 된 후 degrees_celsius는 값 26.0을 **참조**함."
+      ],
+      "metadata": {
+        "id": "UrloCpU_4UiF"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "할당 예"
+      ],
+      "metadata": {
+        "id": "SQYeeuDM4p77"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "degrees_celsius = 26.0"
+      ],
+      "metadata": {
+        "id": "JtCN4toS4pKU"
+      },
+      "execution_count": 42,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "degrees_celsius"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "wAY98rEf4xHA",
+        "outputId": "12cdc0f5-0df9-4be9-8bf9-840ee348a9f4"
+      },
+      "execution_count": 43,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "26.0"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 43
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "참조 예"
+      ],
+      "metadata": {
+        "id": "8LSzmYht4z-i"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "9/5 * degrees_celsius + 32"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "DnXIKLCi32Gc",
+        "outputId": "93959506-4c41-4b53-9814-ee2ecaef8652"
+      },
+      "execution_count": 45,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "78.80000000000001"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 45
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "degrees_celsius / degrees_celsius"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "I4PSKGOv5GPW",
+        "outputId": "e9228cb8-f69a-436f-c1ee-0ee0c6cc6e57"
+      },
+      "execution_count": 46,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "1.0"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 46
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "변수란 프로그램이 실행되면서 값이 변할 수 있기 때문에 변수임\n",
+        "\n",
+        "변수에 새로운 값을 할당하는 것이 가능\n",
+        "\n",
+        "degree_celsius에 새로운 값 26.0 할당"
+      ],
+      "metadata": {
+        "id": "zfIsRG9c5V_d"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "degrees_celsius = 30.0"
+      ],
+      "metadata": {
+        "id": "x14CeEL35VqV"
+      },
+      "execution_count": 53,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "9/5 * degrees_celsius + 32"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "R6EeYYaw5OzE",
+        "outputId": "18109120-3ec6-4574-c373-24fab1e7161d"
+      },
+      "execution_count": 54,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "86.0"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 54
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "이미 존재하는 변수에 값을 할당하면 새로운 변수가 생성되는 것이 아니라 기존 변수를 다시 사용하며, 이 때 변수는 더 이상 예전 값을 참조하지 않음\n",
+        "\n",
+        "\n",
+        "difference라는 또 다른 변수를 생성하여 물의 끓는 점과 degrees_celsius에 저장된 온도간 차이를 구함"
+      ],
+      "metadata": {
+        "id": "mjPJWl4N6Azx"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "degrees_celsius = 15.5"
+      ],
+      "metadata": {
+        "id": "XUbMoUIY5r_c"
+      },
+      "execution_count": 55,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "difference = 100 - degrees_celsius"
+      ],
+      "metadata": {
+        "id": "-mILD4AP6eak"
+      },
+      "execution_count": 56,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "difference"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "bashvXIf6lNj",
+        "outputId": "77beff18-5214-4d0f-b264-631e679fae68"
+      },
+      "execution_count": 57,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "84.5"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 57
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**Note: 주의: 파이썬에서 '='는 동등의 의미가 아님**\n",
+        "\n",
+        "tngkrdptj =는 좌변과 우변이 같다라는 의미로 사용되지만 파이썬에서는 할당의 의미임\n",
+        "\n",
+        "즉 $x$= 12는 변수 $x$에 12라는 값을 할당하는 것이며 12 = $x$는 오류를 발생시킴\n",
+        "\n",
+        "결론적으로 $x$= 12 는 '$x$는 12와 같다'라는 의미가 아니라 '$x$에 12라는 값을 할당한다'는 뜻으로 사용"
+      ],
+      "metadata": {
+        "id": "a-i4xvKA6ou6"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### 2.4.1 값과 변수, 컴퓨터 메모리"
+      ],
+      "metadata": {
+        "id": "Uhggj4AI9ZG-"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Note: 온라인 파이썬 튜터\n",
+        "http://pythontutor.com/visualize.html\n",
+        "\n",
+        "메모리 설정\n",
+        "*   종료된 프레임 숨기기 (hide exited frames)\n",
+        "*   힙에 있는 모든 객체 표시 (render all objects on the heap)\n",
+        "*   포인터에 텍스트 레이블 사용 (use text lables for pointers)\n",
+        "\n",
+        "파이썬 프로그램이 어떻게 실행되는 지 추적하려면 이 시각화 도우미 사용 가능"
+      ],
+      "metadata": {
+        "id": "sgjPyAuv7p1L"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "컴퓨터 메모리의 모든 위치에는 고유 식별 주소가 있음\n",
+        "\n",
+        "메로리 주소를 정수와 구별하기 위해 identifier의 줄임말인 id접두사를 사용하여 id1, id2, 처럼 표시 예정\n"
+      ],
+      "metadata": {
+        "id": "dosJueip_zSW"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "메모리 모델로 부동소수점 값 26.0을 표현하면 다음과 같음"
+      ],
+      "metadata": {
+        "id": "IVAqBDWv_zLz"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "위 그림은 어떤 메모리 주소 id1에 값 26.0이 있음을 보여 줌\n",
+        "\n",
+        "값이 들어 있는 위와 같은 상자를 객체라고 부르는 데, 객체란 타입을 갖는 메모리 주소내 값임\n",
+        "프로그램이 실행될 대, 파있너이 기록하는 모든 값은 메모리 내 객체 속에 저장됨\n",
+        "\n",
+        "메모리 모델에서 변수는 그 변수가 참조하는 객체의 메모리 주소를 포함함"
+      ],
+      "metadata": {
+        "id": "xFlCb6wa9dH5"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "\n",
+        "*  값 26.0이 들어 있는 곳의 메모리 주소는 id1\n",
+        "*  메모리 주소 id1에 있는 객체는 타입이 float이고 값이 26.0\n",
+        "* 변수 degrees_celsius 에는 메모리 주소 id1이 들어 있음\n",
+        "* 변수 degrees_celsius 는 값 26.0을 참조 함\n",
+        "\n",
+        "파이썬 프로그램 내의 변수 degrees_celsius가 참조하는 값을 알아낼 때는 degees_celsius에 들어 있는 메모리 주소에 있는 객체를 살펴보는 것임.\n",
+        "\n",
+        "따라서 위 예에서 메모리 주소가 id1이므로 파이썬은 변수 degrees_celsius가 사용될 때 메모리 주소 id1에 있는 값인 26.0을 사용"
+      ],
+      "metadata": {
+        "id": "GMK5yHdRB_Bw"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## 2.4.2 할당문"
+      ],
+      "metadata": {
+        "id": "c_dMtrGsC9zT"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [],
+      "metadata": {
+        "id": "6OiAmCH0DZlZ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "Oy0cdipm6mVT"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
